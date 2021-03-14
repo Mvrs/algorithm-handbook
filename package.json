@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@types/jest": "^26.0.20",
     "codecov": "^3.8.1",
     "eslint": "^7.22.0",
     "eslint-config-standard": "^16.0.2",
