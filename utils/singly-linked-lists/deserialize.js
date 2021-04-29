@@ -9,7 +9,7 @@ function deserialize(array) {
     if (!list) {
       list = new ListNode(element)
     } else {
-      const node = ListNode(element)
+      const node = new ListNode(element)
       node.next = list
       list = node
     }
