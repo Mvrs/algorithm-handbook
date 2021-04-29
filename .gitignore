@@ -1,7 +1,6 @@
 node_modules
 
-# env tokens for code-cov
-codecov.yml
+
 
 # dotenv environment variables file
 .env

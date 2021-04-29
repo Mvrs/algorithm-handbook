@@ -1,9 +1,7 @@
 language: node_js
 node_js:
   - node
-env:
-  - CODECOV_TOKEN='565c9b90-78cd-4ead-9a89-aaddae5adbf6'
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
 script:
-  - jest --coverage && codecov
+  - test:coveralls
+notifications:
+  email: false
