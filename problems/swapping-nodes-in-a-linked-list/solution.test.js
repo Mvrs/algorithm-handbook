@@ -9,9 +9,10 @@ function getNode(head, k) {
   return node;
 }
 
-// test('Example 1', () => {
-//   const head = deserialize([1, 2, 3, 4, 5])
-//   const k = 2
-//   swapNodes(head, k)
-//   expect(serialize(head)).toStrictEqual([1, 4, 3, 2, 5])
-// })
+test("Example 1", () => {
+  // const head = deserialize([1, 2, 3, 4, 5])
+  // const k = 2
+  // swapNodes(head, k)
+  // expect(serialize(head)).toStrictEqual([1, 4, 3, 2, 5])
+  console.log("Testing 1 2 3");
+});
