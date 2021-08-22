@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #loading {
+        height: 50px;
+        background-color: bisque;
+      }
+    </style>
+  </head>
+  <body>
+    <ul></ul>
+    <p id="loading">loading...</p>
+    <script>
+      const genList = function* () {
+        let i = 0;
+        while (i++ < 50) {
+          yield String(Date.now() + i);
+        }
+      };
+
+      // mock data
+
+      const fetchList = () => {
+        return new Promise(resolve => {
+          setTimeout(() => {
+            resolve([...genList()]);
+          }, 1000);
+        });
+      };
+
+      // fetchList().then(console.log);
+      // one of the edge cases is that if the list is too short then
+      // it will not work
+
+      // since it only listens to the changes of the intersection
+
+      const ul = document.querySelector("ul");
+      const renderList = list => {
+        const fragment = document.createDocumentFragment();
+        for (const item of list) {
+          const li = document.createElement("li");
+          li.textContent = item;
+          // not a child
+          fragment.append(li);
+        }
+        ul.append(fragment);
+      };
+
+      // we need to check when it's loading
+      // create an observer
+      // fetchList().then(renderList);
+      // onMount
+      const loadMore = () => fetchList().then(renderList);
+      // allows us to listen for multiple entry for a single element
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              // this means it jumps to our viewPort
+              loadMore();
+            }
+          });
+        },
+        {
+          // when the loading is fully visible
+          threshold: 1,
+        },
+      );
+
+      observer.observe(document.querySelector("#loading"));
+    </script>
+  </body>
+</html>
