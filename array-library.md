@@ -15,3 +15,17 @@ const runningSum = (nums) => {
     return nums
 }
 ```
+
+### To insert and swap elements from one array to the other use this method
+> splice(start, deleteCount, item)
+```js
+var createTargetArray = function(nums, index) {
+  let target = []
+  
+  for (let i = 0; i < nums.length; i++) {
+      target.splice(index[i], 0, nums[i])
+  }
+  
+  return target
+};
+```
