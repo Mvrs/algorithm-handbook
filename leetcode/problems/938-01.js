@@ -12,6 +12,9 @@
  * @param {number} high
  * @return {number}
  */
+
+// Stack Solution
+
 var rangeSumBST = function (root, low, high) {
   const stack = [[root, low, high]]
   let sum = 0
